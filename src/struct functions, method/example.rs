@@ -5,12 +5,20 @@ struct Person {
 }
 
 impl Person {
-  fn new(name: String, last_name: String, age: u32) -> Person {
-      Person {
-          name,
-          last_name,
-          age,
-      }
+  fn new()->Person {
+    Person { 
+      name: "default".to_string(),
+      age: 13,
+      last_name: "default".to_string(),
+    }
+  }
+
+  fn from(name: String, last_name: String,age: u32) -> Person {
+    Person { 
+      name,
+      age,
+      last_name,
+    }
   }
 
   //method
