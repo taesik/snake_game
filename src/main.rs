@@ -30,7 +30,6 @@ fn main() {
       last_name: "Krul".to_string(),
       age: 32,
   };
-  person.display_age();
   println!("{} {} {}", person.name, person.last_name, person.age);
 }
 
