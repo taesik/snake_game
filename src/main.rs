@@ -11,6 +11,9 @@ struct Person {
   id: PersonId,
 }
 
+
+struct Animal(String);
+
 impl Person {
   fn new()->Person {
     Person { 
@@ -40,12 +43,13 @@ impl Person {
   fn change_age(&mut self,new_age: u32){
       self.age = new_age;
   }
+
+  fn display_info(&self){
+      println!("{} {} {} {:?}" ,self.name,self.last_name,self.age, self.id);
+  }
 }
 
 fn main() {
-
-Person::new();
-
 
   let mut person = Person::new();
   let person_2 = Person::from(
@@ -56,12 +60,44 @@ Person::new();
   );
 
   person.change_age(22);
+  person.display_info();
 
   println!("first :  {:?}", person.id);
   println!("second : {:?}",person_2.id);
-  println!("third : {:?}",person.name);
-  println!("fourth : {:?}",person.last_name);
-  person.display_age();
+  
+  
+
+//   PersonId::IdentityCard(121,213,121)
+  check_person_id(person.id);
+
+  check_person_id(person_2.id);
 }
 
+fn check_person_id(id: PersonId){
 
+    // PersonId::IdentityCard(121,213,121)
+
+    if let PersonId::Passport(num) = id {
+      println!("It matching Passport {}", num);
+    } else {
+      println!("It not matching Passport ");
+    }
+
+
+    let result = match id {
+        PersonId::IdentityCard(x,y,z)=>{
+            println!("Id cardL first value - {}",x+100);    
+        },
+        PersonId::Passport(x)=>{
+            println!("Passport - {}", x);
+        },
+    };
+
+    let animal = Animal("dog".to_string());
+
+let Animal (animal_type) = animal;
+
+    println!("{}",animal_type);
+
+    println!("{:?}",result);
+}
