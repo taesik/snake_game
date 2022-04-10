@@ -13,7 +13,8 @@
         const wasm = await WebAssembly.instantiate(byteArray.buffer);
         const sumFunctions = wasm.instance.exports.sum;
         const result = sumFunctions(10,500);
-            console.log(result);
+        console.log(result);
+
       }
 
       init();
