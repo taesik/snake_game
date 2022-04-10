@@ -1,6 +1,6 @@
-use snake_game::learning_rust::{Person,Log};
+use snake_game::learning_rust::{Person, Log, PersonId};
 fn main() {
-    let mut person = Person::new();
+
     // let animal = Animal(String::from("cat"));
 
     
@@ -8,7 +8,12 @@ fn main() {
     // log_info(person);
     // log_info_2(&person);
 
-    person.display_info();
+    // person.display_info();
 
+    let mut person = Person::new();
+    let id = PersonId::Passport(12345);
+    println!(" id : {:?}", id);
+
+    println!("person name : {}",person.name());
 
 }

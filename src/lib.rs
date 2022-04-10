@@ -21,16 +21,16 @@ pub mod learning_rust {
     }
 
     #[derive(Debug)]
-    enum PersonId {
-    Passport(u32),
-    IndentityCard(u32, u32, u32),
+    pub enum PersonId {
+        Passport(u32),
+        IndentityCard(u32, u32, u32),
     }
 
     pub struct Person {
-    name: String, // fields
-    last_name: String,
-    age: u32,
-    id: PersonId,
+        pub name: String, // fields
+        last_name: String,
+        age: u32,
+        id: PersonId,
     }
 
     pub struct Animal(pub String);
@@ -48,6 +48,11 @@ pub mod learning_rust {
     impl Log for Person {
         fn display_info(&self) {
 
+            //absolute path
+            crate::learning_rust::top_level::hi();
+            crate::learning_rust::top_level::low_level::hello();
+
+            //relative path
             top_level::hi();
             top_level::low_level::hello();
 
@@ -65,7 +70,7 @@ pub mod learning_rust {
         }
     }
 
-    fn from(name: String, last_name: String, age: u32, id: PersonId) -> Person {
+    pub fn from(name: String, last_name: String, age: u32, id: PersonId) -> Person {
         Person {
             name,
             last_name,
@@ -73,6 +78,11 @@ pub mod learning_rust {
             id
         }
     }
+
+        pub fn name(&self) -> &String {
+            &self.name
+        }
+
 
     pub fn change_age(&mut self, new_age: u32) {
     self.age = new_age;
