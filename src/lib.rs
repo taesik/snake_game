@@ -1,11 +1,23 @@
 pub mod learning_rust {
 
 
-    pub trait Log {
-    fn display_info(&self);
-    fn alert_something(&self) {
-        println!("Default implementation!!!!!!!")
+    mod top_level {
+        fn hi (){ 
+            println!("hi"); 
+        }
+
+        mod low_level {
+            fn hello() { 
+                println!("hello");
+            }
+        }
     }
+
+    pub trait Log {
+        fn display_info(&self);
+        fn alert_something(&self) {
+            println!("Default implementation!!!!!!!")
+        }
     }
 
     #[derive(Debug)]
@@ -34,9 +46,11 @@ pub mod learning_rust {
     }
 
     impl Log for Person {
-    fn display_info(&self) {
-        println!("{} {} {} {:?}", self.name, self.last_name, self.age, self.id)
-    }
+        fn display_info(&self) {
+            println!("{} {} {} {:?}", self.name, self.last_name, self.age, self.id)
+        }
+
+
     }
 
     impl Person {
