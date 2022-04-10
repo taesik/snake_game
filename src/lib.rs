@@ -1,3 +1,13 @@
+fn outsider() {
+   println!("outsider");
+}
+
+pub mod education {
+    pub fn school() {
+        println!("school");
+    }
+}
+
 pub mod learning_rust {
 
 
@@ -36,11 +46,11 @@ pub mod learning_rust {
     pub struct Animal(pub String);
 
     impl Log for Animal {
-    fn display_info(&self) {
-        println!("{}", self.0)
-    }
+        fn display_info(&self) {
+            println!("{}", self.0)
+        }
 
-    fn alert_something(&self) {
+        fn alert_something(&self) {
         println!("ANIMAL implementation!!!!!!!")
     }
     }
@@ -48,13 +58,20 @@ pub mod learning_rust {
     impl Log for Person {
         fn display_info(&self) {
 
-            //absolute path
-            crate::learning_rust::top_level::hi();
-            crate::learning_rust::top_level::low_level::hello();
+            /**absolute path**/
+            // crate::learning_rust::top_level::hi();
+            // crate::learning_rust::top_level::low_level::hello();
 
-            //relative path
-            top_level::hi();
-            top_level::low_level::hello();
+            // relative path
+            // top_level::hi();
+            // top_level::low_level::hello();
+
+            /**
+            crate::outsider();
+            super -> going outside of current module
+            **/
+            super::outsider();
+
 
             println!("{} {} {} {:?}", self.name, self.last_name, self.age, self.id)
         }
