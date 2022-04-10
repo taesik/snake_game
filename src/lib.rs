@@ -2,12 +2,12 @@ pub mod learning_rust {
 
 
     mod top_level {
-        fn hi (){ 
+        pub fn hi (){
             println!("hi"); 
         }
 
-        mod low_level {
-            fn hello() { 
+        pub mod low_level {
+            pub fn hello() {
                 println!("hello");
             }
         }
@@ -47,10 +47,12 @@ pub mod learning_rust {
 
     impl Log for Person {
         fn display_info(&self) {
+
+            top_level::hi();
+            top_level::low_level::hello();
+
             println!("{} {} {} {:?}", self.name, self.last_name, self.age, self.id)
         }
-
-
     }
 
     impl Person {
