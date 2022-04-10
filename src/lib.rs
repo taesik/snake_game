@@ -1,15 +1,20 @@
+mod another_lib ;
+//mod keyword is used for import
+
+
+use another_lib::another_mod::another_function;
+//use keyword is used for variable binding
+
+
 fn outsider() {
+   another_lib::another_mod::another_function();
    println!("outsider");
 }
 
-pub mod education {
-    pub fn school() {
-        println!("school");
-    }
-}
+
 
 pub mod learning_rust {
-
+    use std::fmt;
 
     mod top_level {
         pub fn hi (){
@@ -30,17 +35,27 @@ pub mod learning_rust {
         }
     }
 
-    #[derive(Debug)]
     pub enum PersonId {
         Passport(u32),
         IndentityCard(u32, u32, u32),
+    }
+
+    impl fmt::Display for PersonId {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+            match self {
+                PersonId::Passport(number) => write!(f, "Passport: {}", number),
+                PersonId::IndentityCard(number, month, year) =>{
+                    write!(f, "IdentityCard: {}/{}/{}", number, month, year)
+                }
+            }
+        }
     }
 
     pub struct Person {
         pub name: String, // fields
         last_name: String,
         age: u32,
-        id: PersonId,
+        pub id: PersonId,
     }
 
     pub struct Animal(pub String);
@@ -70,10 +85,10 @@ pub mod learning_rust {
             crate::outsider();
             super -> going outside of current module
             **/
-            super::outsider();
+            // super::outsider();
 
 
-            println!("{} {} {} {:?}", self.name, self.last_name, self.age, self.id)
+            println!("{} {} {} {}", self.name, self.last_name, self.age, self.id);
         }
     }
 
@@ -83,7 +98,7 @@ pub mod learning_rust {
             name: "Default".to_string(),
             last_name: "Default".to_string(),
             age: 0,
-            id: PersonId::IndentityCard(540, 320, 100)
+            id: PersonId::Passport(540)
         }
     }
 
