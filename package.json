@@ -2,10 +2,10 @@
   "name": "www",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "www/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server"
+    "dev": "www/node_modules/.bin/webpack-dev-server"
   },
   "keywords": [],
   "author": "",
